@@ -129,7 +129,7 @@ class LoadImages:  # for inference
         else:
             # Read image
             self.count += 1
-            img0 = np.load(path)
+            img0 = np.load(path,allow_pickle=True,fix_imports=True)
             img0 = img0 * (255 / img0.max())  # BGR
             assert img0 is not None, 'Image Not Found ' + path
             print('image %g/%g %s: ' % (self.count, self.nf, path), end='')
@@ -402,7 +402,7 @@ class LoadImagesAndLabels(Dataset):  # for training/testing
                 # Extract object detection boxes for a second stage classifier
                 if extract_bounding_boxes:
                     p = Path(self.img_files[i])
-                    img = np.load(p)
+                    img = np.load(p,allow_pickle=True,fix_imports=True)
                     img = img * (255 / img.max())
                     h, w = img.shape[:2]
                     for j, x in enumerate(l):
@@ -572,7 +572,7 @@ def load_image(self, index):
     img = self.imgs[index]
     if img is None:  # not cached
         path = self.img_files[index]
-        img = np.load(path)
+        img = np.load(path,allow_pickle=True,fix_imports=True)
         img = img * (255 / img.max())
         assert img is not None, 'Image Not Found ' + path
         h0, w0 = img.shape[:2]  # orig hw
@@ -863,7 +863,7 @@ def reduce_img_size(path='path/images', img_size=1024):  # from utils.datasets i
     create_folder(path_new)
     for f in tqdm(glob.glob('%s/*.*' % path)):
         try:
-            img = np.load(f)
+            img = np.load(f,allow_pickle=True,fix_imports=True)
             img = img * (255 / img.max())
             h, w = img.shape[:2]
             r = img_size / max(h, w)  # size ratio

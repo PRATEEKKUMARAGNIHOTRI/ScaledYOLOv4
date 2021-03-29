@@ -17,8 +17,8 @@ from tqdm import tqdm
 from utils.general import xyxy2xywh, xywh2xyxy, torch_distributed_zero_first
 
 help_url = ''
-img_formats = ['.bmp', '.jpg', '.jpeg', '.png', '.tif', '.tiff', '.dng']
-vid_formats = ['.mov', '.avi', '.mp4', '.mpg', '.mpeg', '.m4v', '.wmv', '.mkv']
+img_formats = ['.bmp', '.jpg', '.jpeg', '.npy', '.png', '.tif', '.tiff', '.dng']
+vid_formats = ['.mov', '.avi', '.mp4', '.npy', '.mpg', '.mpeg', '.m4v', '.wmv', '.mkv']
 
 # Get orientation exif tag
 for orientation in ExifTags.TAGS.keys():

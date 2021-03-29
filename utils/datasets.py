@@ -18,7 +18,7 @@ from utils.general import xyxy2xywh, xywh2xyxy, torch_distributed_zero_first
 
 help_url = ''
 img_formats = ['.bmp', '.jpg', '.jpeg', '.npy', '.png', '.tif', '.tiff', '.dng']
-vid_formats = ['.mov', '.avi', '.mp4', '.npy', '.mpg', '.mpeg', '.m4v', '.wmv', '.mkv']
+vid_formats = ['.mov', '.avi', '.mp4', '.mpg', '.mpeg', '.m4v', '.wmv', '.mkv']
 
 # Get orientation exif tag
 for orientation in ExifTags.TAGS.keys():
@@ -132,7 +132,7 @@ class LoadImages:  # for inference
             img0 = np.load(path,allow_pickle=True,fix_imports=True)
             img0 = img0 * (255 / img0.max())  # BGR
             assert img0 is not None, 'Image Not Found ' + path
-            print('image %g/%g %s: ' % (self.count, self.nf, path), end='')
+            #print('image %g/%g %s: ' % (self.count, self.nf, path), end='')
 
         # Padded resize
         img = letterbox(img0, new_shape=self.img_size)[0]
